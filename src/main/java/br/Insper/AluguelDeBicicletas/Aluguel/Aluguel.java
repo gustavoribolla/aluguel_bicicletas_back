@@ -1,12 +1,9 @@
 package br.Insper.AluguelDeBicicletas.Aluguel;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-import java.text.DateFormat;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 public class Aluguel {
@@ -14,33 +11,109 @@ public class Aluguel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false)
     private LocalDateTime dataInicio;
 
-    private LocalDateTime duracaoViagem;
+    private long duracaoViagem;
 
-    private String Origem;
+    @Column(nullable = false)
+    private String origem;
 
-    private String Destino;
+    private String destino;
 
-    private double KmPercorridos;
+    private double kmPercorridos;
 
+    @Column(nullable = false)
     private double precoTotal;
 
     private String status;
 
-    private
+    @Column(nullable = false)
+    private Integer idBicliceta;
 
     public Aluguel() {
     }
 
-    public Aluguel(LocalDateTime dataInicio, String origem, String destino, double kmPercorridos, double precoTotal, String status) {
+    public Aluguel(LocalDateTime dataInicio, String origem, String destino, double kmPercorridos, double precoTotal, String status, long duracaoViagem) {
         this.dataInicio = dataInicio;
-        this.duracaoViagem = LocalDateTime.now() - dataInicio;
-        this.Origem = origem;
-        this.Destino = destino;
-        KmPercorridos = kmPercorridos;
+        this.duracaoViagem = duracaoViagem;
+        this.origem = origem;
+        this.destino = destino;
+        this.kmPercorridos = kmPercorridos;
         this.precoTotal = precoTotal;
         this.status = status;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(LocalDateTime dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public long getDuracaoViagem() {
+        return duracaoViagem;
+    }
+
+    public void setDuracaoViagem(long duracaoViagem) {
+        this.duracaoViagem = duracaoViagem;
+    }
+
+    public String getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(String origem) {
+        this.origem = origem;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+
+    public double getKmPercorridos() {
+        return kmPercorridos;
+    }
+
+    public void setKmPercorridos(double kmPercorridos) {
+        this.kmPercorridos = kmPercorridos;
+    }
+
+    public double getPrecoTotal() {
+        return precoTotal;
+    }
+
+    public void setPrecoTotal(double precoTotal) {
+        this.precoTotal = precoTotal;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Integer getIdBicliceta() {
+        return idBicliceta;
+    }
+
+    public void setIdBicliceta(Integer idBicliceta) {
+        this.idBicliceta = idBicliceta;
     }
 }
 
