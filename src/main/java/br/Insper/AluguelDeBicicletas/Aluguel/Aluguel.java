@@ -116,6 +116,3 @@ public class Aluguel {
         this.idBicliceta = idBicliceta;
     }
 }
-
-
-

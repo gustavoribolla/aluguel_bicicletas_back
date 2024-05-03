@@ -1,1 +1,0 @@
-# aluguel_bicicletas_back
