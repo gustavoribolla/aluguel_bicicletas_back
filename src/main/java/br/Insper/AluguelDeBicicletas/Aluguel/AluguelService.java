@@ -1,5 +1,6 @@
 package br.Insper.AluguelDeBicicletas.Aluguel;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,19 @@ public class AluguelService {
         }
     }
 
+    public Aluguel excluirAluguel(Integer id) {
+        Optional<Aluguel> op = aluguelRepository.findById(id);
+        if (op.isPresent()) {
+            Aluguel aluguel = op.get();
+            aluguelRepository.delete(aluguel);
+            return aluguel;
+        }
+        else{
+            throw new RuntimeException("Aluguel não encontrado");
+        }
+    }
 
-
+    public List<Aluguel> aluguelPorBicicleta(Integer idBicicleta) {
+        return aluguelRepository.findByBicicleta(idBicicleta);
+    }
 }
