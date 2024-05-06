@@ -2,6 +2,7 @@ package br.Insper.AluguelDeBicicletas.Aluguel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -30,8 +31,8 @@ public class AluguelController {
         return new ResponseEntity<>(aluguelExcluido, HttpStatus.OK);
     }
 
-    @GetMapping("/aluguel/{idBicicleta}")
-    public ResponseEntity<List<Aluguel>> aluguelPorBicicleta(@PathVariable Integer idBicicleta) {
+    @GetMapping(path = {"/aluguel", "/aluguel/{idBicicleta}"})
+    public ResponseEntity<List<Aluguel>> aluguelPorBicicleta(@PathVariable(required = false) Integer idBicicleta) {
         List<Aluguel> aluguel = aluguelService.aluguelPorBicicleta(idBicicleta);
         return new ResponseEntity<>(aluguel, HttpStatus.OK);
     }

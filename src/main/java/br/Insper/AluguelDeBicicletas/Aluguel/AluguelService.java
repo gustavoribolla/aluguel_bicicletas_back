@@ -46,6 +46,9 @@ public class AluguelService {
     }
 
     public List<Aluguel> aluguelPorBicicleta(Integer idBicicleta) {
-        return aluguelRepository.findByidBicicleta(idBicicleta);
-    }
+        if(idBicicleta!=null){
+            return aluguelRepository.findByBicicleta(idBicicleta);
+        }
+        return aluguelRepository.findAll();
+}
 }
