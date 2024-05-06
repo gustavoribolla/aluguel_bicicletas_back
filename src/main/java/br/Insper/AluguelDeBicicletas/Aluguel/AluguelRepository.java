@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AluguelRepository extends JpaRepository<Aluguel, Integer> {
-    List<Aluguel> findByBicicleta(int idBicicleta);
+    List<Aluguel> findByBicicleta(Integer bicicleta);
 }

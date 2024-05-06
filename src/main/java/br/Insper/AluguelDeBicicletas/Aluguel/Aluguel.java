@@ -29,7 +29,7 @@ public class Aluguel {
     private String status;
 
     @Column(nullable = false)
-    private Integer idBicliceta;
+    private Integer bicicleta;
 
     public Aluguel() {
     }
@@ -108,11 +108,11 @@ public class Aluguel {
         this.status = status;
     }
 
-    public Integer getIdBicliceta() {
-        return idBicliceta;
+    public Integer getBicicleta() {
+        return bicicleta;
     }
 
-    public void setIdBicliceta(Integer idBicliceta) {
-        this.idBicliceta = idBicliceta;
+    public void setBicicleta(Integer bicicleta) {
+        this.bicicleta = bicicleta;
     }
 }
