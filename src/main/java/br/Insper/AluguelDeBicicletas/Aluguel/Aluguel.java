@@ -31,6 +31,8 @@ public class Aluguel {
     @Column(nullable = false)
     private Integer bicicleta;
 
+
+
     public Aluguel() {
     }
 
@@ -108,11 +110,13 @@ public class Aluguel {
         this.status = status;
     }
 
+
     public Integer getBicicleta() {
         return bicicleta;
     }
 
     public void setBicicleta(Integer bicicleta) {
         this.bicicleta = bicicleta;
+
     }
 }
