@@ -32,8 +32,17 @@ public class AluguelController {
     }
 
     @GetMapping("/aluguel")
-    public ResponseEntity<List<Aluguel>> aluguelPorBicicleta(@RequestParam(required = false) Integer idBicicleta) {
-        List<Aluguel> aluguel = aluguelService.aluguelPorBicicleta(idBicicleta);
+    public ResponseEntity<List<Aluguel>> aluguelPorBicicleta(@RequestParam(required = false) Integer idBicicleta, @RequestParam(required = false)  String status) {
+        List<Aluguel> aluguel;
+        if (idBicicleta != null) {
+            aluguel = aluguelService.aluguelPorBicicleta(idBicicleta);
+        }
+        else if (status != null) {
+            aluguel = aluguelService.aluguelPorStatus(status);
+        }
+        else{
+            aluguel = aluguelService.aluguelPorBicicleta(null);
+        }
         return new ResponseEntity<>(aluguel, HttpStatus.OK);
     }
 
@@ -43,9 +52,5 @@ public class AluguelController {
         return new ResponseEntity<>(aluguel, HttpStatus.OK);
     }
 
-    @GetMapping("/aluguel/status")
-    public ResponseEntity<List<Aluguel>> aluguelPorStatus(@RequestParam String status){
-        List<Aluguel> aluguel = aluguelService.aluguelPorStatus(status);
-        return new ResponseEntity<>(aluguel, HttpStatus.OK);
-    }
+
 }
