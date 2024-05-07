@@ -11,7 +11,7 @@ public class Aluguel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+
     private LocalDateTime dataInicio;
 
     private long duracaoViagem;

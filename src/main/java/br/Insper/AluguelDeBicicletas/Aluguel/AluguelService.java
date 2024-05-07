@@ -14,7 +14,11 @@ public class AluguelService {
     private AluguelRepository aluguelRepository;
 
     public Aluguel inicializarAluguel(Aluguel aluguel) {
+        Aluguel op = aluguelRepository.save(aluguel);
+        op.setDataInicio(LocalDateTime.now());
+        
         return aluguelRepository.save(aluguel);
+
     }
 
     public Aluguel finalizarAluguel(Integer id, Aluguel infosFinais) {
