@@ -31,8 +31,8 @@ public class AluguelController {
         return new ResponseEntity<>(aluguelExcluido, HttpStatus.OK);
     }
 
-    @GetMapping(path = {"/aluguel", "/aluguel/{idBicicleta}"})
-    public ResponseEntity<List<Aluguel>> aluguelPorBicicleta(@PathVariable(required = false) Integer idBicicleta) {
+    @GetMapping("/aluguel")
+    public ResponseEntity<List<Aluguel>> aluguelPorBicicleta(@RequestParam(required = false) Integer idBicicleta) {
         List<Aluguel> aluguel = aluguelService.aluguelPorBicicleta(idBicicleta);
         return new ResponseEntity<>(aluguel, HttpStatus.OK);
     }
