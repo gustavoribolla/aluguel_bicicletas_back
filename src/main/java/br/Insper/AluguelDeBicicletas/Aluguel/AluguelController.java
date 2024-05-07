@@ -36,4 +36,10 @@ public class AluguelController {
         List<Aluguel> aluguel = aluguelService.aluguelPorBicicleta(idBicicleta);
         return new ResponseEntity<>(aluguel, HttpStatus.OK);
     }
+
+    @GetMapping("/aluguel/{id}")
+    public ResponseEntity<Aluguel> aluguelPorId(@PathVariable Integer id){
+        Aluguel aluguel = aluguelService.aluguelPorId(id);
+        return new ResponseEntity<>(aluguel, HttpStatus.OK);
+    }
 }

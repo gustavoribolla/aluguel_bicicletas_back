@@ -44,6 +44,15 @@ public class AluguelService {
             throw new RuntimeException("Aluguel não encontrado");
         }
     }
+    public Aluguel aluguelPorId(Integer id) {
+        Optional<Aluguel> op = aluguelRepository.findById(id);
+        if (op.isPresent()) {
+            return op.get();
+        }
+        else{
+            throw new RuntimeException("Aluguel não encontrado");
+        }
+    }
 
     public List<Aluguel> aluguelPorBicicleta(Integer idBicicleta) {
         if(idBicicleta!=null){
