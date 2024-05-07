@@ -21,7 +21,7 @@ public class AluguelService {
         Optional<Aluguel> op = aluguelRepository.findById(id);
         if (op.isPresent()) {
             Aluguel aluguelAtualizado = op.get();
-            aluguelAtualizado.setStatus("Finalizado");
+            aluguelAtualizado.setStatus("FINALIZADO");
             aluguelAtualizado.setDestino(infosFinais.getDestino());
             aluguelAtualizado.setDuracaoViagem(ChronoUnit.MINUTES.between(aluguelAtualizado.getDataInicio(), LocalDateTime.now()));
             aluguelAtualizado.setKmPercorridos(infosFinais.getKmPercorridos());
@@ -52,6 +52,11 @@ public class AluguelService {
         else{
             throw new RuntimeException("Aluguel não encontrado");
         }
+    }
+    //filtra aluguel por se esta confirmado
+    public List<Aluguel> aluguelPorStatus(String status) {
+            return aluguelRepository.findByStatus(status);
+
     }
 
     public List<Aluguel> aluguelPorBicicleta(Integer idBicicleta) {

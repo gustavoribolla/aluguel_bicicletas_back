@@ -42,4 +42,10 @@ public class AluguelController {
         Aluguel aluguel = aluguelService.aluguelPorId(id);
         return new ResponseEntity<>(aluguel, HttpStatus.OK);
     }
+
+    @GetMapping("/aluguel/status")
+    public ResponseEntity<List<Aluguel>> aluguelPorStatus(@RequestParam String status){
+        List<Aluguel> aluguel = aluguelService.aluguelPorStatus(status);
+        return new ResponseEntity<>(aluguel, HttpStatus.OK);
+    }
 }
